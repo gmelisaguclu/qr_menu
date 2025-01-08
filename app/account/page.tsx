@@ -16,20 +16,18 @@ export const page = () => {
   return (
     <div>
       {" "}
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="account" className="w-[400px] mt-8">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">Log In</TabsTrigger>
-          <TabsTrigger value="password">Sign Up</TabsTrigger>
+          <TabsTrigger value="account">Giriş Yap</TabsTrigger>
+          <TabsTrigger value="password">Kayıt Ol</TabsTrigger>
         </TabsList>
         <TabsContent value="account">
           <Card>
-            <CardHeader>
-              <CardTitle>Account</CardTitle>
-              <CardDescription>
-                If you already have an account, log in!
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
+            {/* <CardHeader>
+              <CardTitle>Hesabım</CardTitle>
+              <CardDescription> </CardDescription>
+            </CardHeader> */}
+            <CardContent className="space-y-2 mt-5">
               <div className="space-y-1">
                 <Label htmlFor="name">E-mail</Label>
                 <Input
@@ -39,7 +37,7 @@ export const page = () => {
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="username">Password</Label>
+                <Label htmlFor="username">Şifre</Label>
                 <Input
                   id="username"
                   defaultValue="Gm12345"
@@ -48,28 +46,28 @@ export const page = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Log In</Button>
+              <Button>Giriş Yap</Button>
             </CardFooter>
           </Card>
         </TabsContent>
         <TabsContent value="password">
           <Card>
-            <CardHeader>
+            {/* <CardHeader>
               <CardTitle></CardTitle>
               <CardDescription>Don't have an account? Sign up!</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
+            </CardHeader> */}
+            <CardContent className="space-y-2 mt-5">
               <div className="space-y-1">
                 <Label htmlFor="current">E-mail</Label>
                 <Input id="current" type="password" />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="new">Password</Label>
+                <Label htmlFor="new">Şifre</Label>
                 <Input id="new" type="password" />
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Save password</Button>
+              <Button>Kayıt Ol</Button>
             </CardFooter>
           </Card>
         </TabsContent>
