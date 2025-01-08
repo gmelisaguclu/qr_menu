@@ -1,21 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const page = () => {
   return (
-    <div>
-      {" "}
+    <div className="h-screen w-full flex items-center justify-center">
       <Tabs defaultValue="account" className="w-[400px] mt-8">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="account">Giriş Yap</TabsTrigger>
@@ -23,10 +15,6 @@ export const page = () => {
         </TabsList>
         <TabsContent value="account">
           <Card>
-            {/* <CardHeader>
-              <CardTitle>Hesabım</CardTitle>
-              <CardDescription> </CardDescription>
-            </CardHeader> */}
             <CardContent className="space-y-2 mt-5">
               <div className="space-y-1">
                 <Label htmlFor="name">E-mail</Label>
@@ -52,10 +40,6 @@ export const page = () => {
         </TabsContent>
         <TabsContent value="password">
           <Card>
-            {/* <CardHeader>
-              <CardTitle></CardTitle>
-              <CardDescription>Don't have an account? Sign up!</CardDescription>
-            </CardHeader> */}
             <CardContent className="space-y-2 mt-5">
               <div className="space-y-1">
                 <Label htmlFor="current">E-mail</Label>
