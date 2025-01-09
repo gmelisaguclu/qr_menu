@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronUp, Moon, Sun, User2 } from "lucide-react";
+import { ChevronUp, DoorOpen, Moon, Sun, User2 } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -11,15 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Calendar,
-  BookOpenText,
-  Home,
-  Inbox,
-  Search,
-  UserRound,
-  Settings,
-} from "lucide-react";
+import { BookOpenText, Home, UserRound, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -35,22 +27,22 @@ import {
 
 const items = [
   {
-    title: "Home",
+    title: "Anasayfa",
     url: "/home",
     icon: Home,
   },
   {
-    title: "My Menu",
+    title: "Menüm",
     url: "/mymenu",
     icon: BookOpenText,
   },
   {
-    title: "Account",
+    title: "Hesabım",
     url: "/account",
     icon: UserRound,
   },
   {
-    title: "Settings",
+    title: "Ayarlar",
     url: "/settings",
     icon: Settings,
   },
@@ -114,10 +106,16 @@ export function AppSidebar() {
                 className="w-[--radix-popper-anchor-width]"
               >
                 <DropdownMenuItem>
-                  <span>çıkış yap</span>
+                  <span className="flex items-center gap-2">
+                    <Settings className="size-fit" />
+                    hesap ayarları
+                  </span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <span>yardım</span>
+                  <span className="flex items-center gap-2">
+                    <DoorOpen className="size-fit" />
+                    çıkış yap
+                  </span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
