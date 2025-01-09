@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import RestorantInformation from "@/components/RestorantInformation";
 
-function page() {
+export default function Page() {
   return (
     <div className="h-screen w-full flex items-center justify-center">
       <Card className="w-[80%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[40%] aspect-[4/3] flex items-center flex-col justify-center">
@@ -24,7 +25,10 @@ function page() {
             Kendi mutfağınızın yıldızı olun, menünüzü özgürce tasarlayın.
           </CardDescription>
         </CardHeader>
-        <CardFooter className="flex my-4 justify-center">
+        <CardFooter className="flex flex-col gap-4">
+          <div>
+            <RestorantInformation />
+          </div>
           <div>
             <Link href={"/menu-olustur"}>
               <Button>
@@ -37,5 +41,3 @@ function page() {
     </div>
   );
 }
-
-export default page;
