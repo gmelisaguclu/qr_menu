@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter } from "next/navigation";
 import { signInUser, signUpNewUser } from "@/data/actions/userActions";
+import toast from "react-hot-toast";
 
 export const page = () => {
   const router = useRouter();
@@ -14,25 +15,24 @@ export const page = () => {
   const [password, setPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSignUp = async () => {
     try {
       const data = await signUpNewUser(email, password);
-      setMessage("Kayıt başarılı!");
+      toast.success("Kayıt başarılı!");
       router.push("/");
     } catch (error) {
-      setMessage("Kayıt sırasında bir hata oluştu: " + error);
+      toast.error("Kayıt başarısız " + error);
     }
   };
 
   const handleLogin = async () => {
     try {
       const data = await signInUser(loginEmail, loginPassword);
-      setMessage("Giriş başarılı!");
+      toast.success("Giriş başarılı!");
       router.push("/dashboard/home");
     } catch (error) {
-      setMessage("Giriş başarısız: " + error);
+      toast.error("Giriş başarısız: " + error);
     }
   };
 
@@ -104,21 +104,11 @@ export const page = () => {
           </Card>
         </TabsContent>
       </Tabs>
-
-      {/* Hata veya Başarı Mesajı */}
-      {message && (
-        <div className="mt-4 text-center">
-          <p
-            className={
-              message.includes("başarılı") ? "text-green-500" : "text-red-500"
-            }
-          >
-            {message}
-          </p>
-        </div>
-      )}
     </div>
   );
 };
 
 export default page;
+function useToast(): { toast: any } {
+  throw new Error("Function not implemented.");
+}

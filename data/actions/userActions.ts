@@ -1,8 +1,23 @@
 "use server";
+import supabaseAdmin from "@/lib/supabaseAdminClient";
 import supabase from "@/lib/supabaseClient";
-
 export async function signUpNewUser(email: string, password: string) {
   try {
+    const { data: existingUsers, error: listError } =
+      await supabaseAdmin.auth.admin.listUsers();
+
+    if (listError) throw listError;
+
+    const isEmailTaken = existingUsers?.users?.some(
+      (user) => user.email === email
+    );
+
+    if (isEmailTaken) {
+      throw new Error(
+        "Bu e-posta zaten kayıtlı. Lütfen farklı bir e-posta deneyin."
+      );
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
