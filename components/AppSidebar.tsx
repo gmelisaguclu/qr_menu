@@ -36,11 +36,7 @@ const items = [
     url: "/dashboard/mymenu",
     icon: BookOpenText,
   },
-  {
-    title: "Hesabım",
-    url: "/dashboard/account",
-    icon: UserRound,
-  },
+
   {
     title: "Ayarlar",
     url: "/dashboard/settings",
