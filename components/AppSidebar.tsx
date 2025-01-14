@@ -28,22 +28,22 @@ import {
 const items = [
   {
     title: "Anasayfa",
-    url: "/home",
+    url: "/dashboard/home",
     icon: Home,
   },
   {
     title: "Menüm",
-    url: "/mymenu",
+    url: "/dashboard/mymenu",
     icon: BookOpenText,
   },
   {
     title: "Hesabım",
-    url: "/account",
+    url: "/dashboard/account",
     icon: UserRound,
   },
   {
     title: "Ayarlar",
-    url: "/settings",
+    url: "/dashboard/settings",
     icon: Settings,
   },
 ];

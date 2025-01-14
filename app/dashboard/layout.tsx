@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Edu_AU_VIC_WA_NT_Hand } from "next/font/google";
-import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -44,7 +43,11 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            <SidebarTrigger />
+            {children}
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

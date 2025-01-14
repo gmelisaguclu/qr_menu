@@ -30,7 +30,7 @@ export default function Page() {
             <RestorantInformation />
           </div>
           <div>
-            <Link href={"/menu-olustur"}>
+            <Link href={"/dashboard/create-menu"}>
               <Button>
                 Menü Oluştur <Plus />
               </Button>

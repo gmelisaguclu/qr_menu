@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { Sheet } from "@/components/ui/sheet";
-import { Sidebar } from "@/components/ui/sidebar";
-import Image from "next/image";
+import { fetchData } from "@/data/actions/products";
 
-export default function Home() {
-  return <div></div>;
+export default async function Home() {
+  const data = await fetchData();
+  console.log(data);
+
+  return (
+    <div>
+      {data?.map((dt: any) => (
+        <div key={dt.id}>{dt.name}</div>
+      ))}
+    </div>
+  );
 }
