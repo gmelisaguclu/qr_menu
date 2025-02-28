@@ -1,5 +1,5 @@
 import { fetchData } from "@/data/actions/products";
-import UnauthPage from "./unauth/page";
+import UnauthPage from "./login/page";
 
 export default async function Home() {
   // const data = await fetchData();
