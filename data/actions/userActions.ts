@@ -21,6 +21,7 @@ export async function signInUser(email: string, password: string) {
       email,
       password,
     });
+    console.log(data, "data", error, "error");
 
     if (error) throw error;
 
@@ -48,7 +49,7 @@ export async function authGetUser() {
 
 export async function getUserId() {
   try {
-    const { data, error } = await supabase.auth.getSession();
+    const { data, error } = await supabase.auth.getUser();
 
     if (error) {
       console.error("Oturum alma hatası:", error.message);
@@ -57,15 +58,15 @@ export async function getUserId() {
       );
     }
 
-    if (!data.session || !data.session.user) {
+    if (!data || !data.user) {
       console.warn("Oturum bulunamadı veya kullanıcı bilgisi eksik.");
       throw new Error(
         "Kullanıcı oturumu bulunamadı! Lütfen tekrar giriş yapın."
       );
     }
 
-    console.log("Giriş yapan kullanıcının ID'si:", data.session.user.id);
-    return data.session.user.id;
+    console.log("Giriş yapan kullanıcının ID'si:", data.user.id);
+    return data.user.id;
   } catch (err) {
     console.error("getUserId error:", err);
     return null;

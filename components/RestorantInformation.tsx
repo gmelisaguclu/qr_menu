@@ -26,20 +26,6 @@ const RestorantInformation = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [userId, setUserId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const id = await getUserId();
-        setUserId(id);
-      } catch (err) {
-        console.error("Kullanıcı ID alınamadı:", err);
-      }
-    };
-
-    fetchUser();
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,11 +36,8 @@ const RestorantInformation = () => {
     setLoading(true);
     setMessage("");
 
-    if (!userId) {
-      setMessage("Kullanıcı bulunamadı. Lütfen tekrar giriş yapın.");
-      setLoading(false);
-      return;
-    }
+    const id = await getUserId();
+    console.log(id, "id");
 
     const { error } = await supabase.from("restaurants").insert([
       {
@@ -62,7 +45,7 @@ const RestorantInformation = () => {
         address: formData.address,
         communication: formData.communication,
         logo: formData.logo,
-        user_id: userId,
+        user_id: id,
       },
     ]);
 
