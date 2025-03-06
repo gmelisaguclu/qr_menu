@@ -50,7 +50,15 @@ export async function getUserId() {
   try {
     const { data, error } = await supabase.auth.getSession();
 
-    if (error || !data.session) {
+    if (error) {
+      console.error("Oturum alma hatası:", error.message);
+      throw new Error(
+        "Kullanıcı oturumu bulunamadı! Lütfen tekrar giriş yapın."
+      );
+    }
+
+    if (!data.session || !data.session.user) {
+      console.warn("Oturum bulunamadı veya kullanıcı bilgisi eksik.");
       throw new Error(
         "Kullanıcı oturumu bulunamadı! Lütfen tekrar giriş yapın."
       );
@@ -59,7 +67,7 @@ export async function getUserId() {
     console.log("Giriş yapan kullanıcının ID'si:", data.session.user.id);
     return data.session.user.id;
   } catch (err) {
-    console.error("getUserId.error:", err);
-    throw err;
+    console.error("getUserId error:", err);
+    return null;
   }
 }
