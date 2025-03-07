@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronUp, DoorOpen, Moon, Sun, User2 } from "lucide-react";
+import { ChevronUp, DoorOpen, Moon, Router, Sun, User2 } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import supabase from "@/lib/supabaseClient";
+import { signOut } from "@/data/actions/userActions";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -46,6 +49,15 @@ const items = [
 
 export function AppSidebar() {
   const { setTheme } = useTheme();
+  const router = useRouter();
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.push("/");
+    } catch (error) {
+      console.error("Çıkış işlemi sırasında hata oluştu:", error);
+    }
+  };
   return (
     <Sidebar>
       <SidebarContent>
@@ -107,7 +119,7 @@ export function AppSidebar() {
                     hesap ayarları
                   </span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={handleSignOut}>
                   <span className="flex items-center gap-2">
                     <DoorOpen className="size-fit" />
                     çıkış yap

@@ -72,3 +72,9 @@ export async function getUserId() {
     return null;
   }
 }
+export async function signOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.error("çıkış yapma hatası");
+  }
+}
